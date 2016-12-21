@@ -39,11 +39,8 @@ if [ -e "$envdir/GULPFILE" ]; then
     GULPFILE=$(cat $envdir/GULPFILE)
 fi
 
-echo "-----> installing super-front node modules ..."
-cd $build/app/assets/super-front
-npm install
-
 cd $build
+
 echo "-----> using gulpfile ${GULPFILE:-gulpfile.js} ..."
 gulp --gulpfile ${GULPFILE:-gulpfile.js} assets:copy 2>&1
 
