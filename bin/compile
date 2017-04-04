@@ -44,5 +44,10 @@ cd $build
 echo "-----> using gulpfile ${GULPFILE:-gulpfile.js} ..."
 gulp --gulpfile ${GULPFILE:-gulpfile.js} assets:copy 2>&1
 
+echo "-----> creating stormpath properties file... working directory is: "
+echo `pwd`
+echo "apiKey.id=$STORMPATH_API_KEY_ID" > apikey.properties
+echo "apiKey.secret=$STORMPATH_API_KEY_SECRET" >> apikey.properties
+
 mkdir -p $build/bin
 cp `which goose` $build/bin
