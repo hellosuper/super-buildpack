@@ -39,7 +39,6 @@ cd $build/app/assets/super-front
 npm install
 
 cd $build
-echo $PWD
 make copy_assets 2>&1
 
 mkdir -p $build/bin
