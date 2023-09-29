@@ -34,18 +34,12 @@ if [ -d "$envdir" ]; then
     done
 fi
 
-if [ -e "$envdir/GULPFILE" ]; then
-    echo "Alternate gulpfile located"
-    GULPFILE=$(cat $envdir/GULPFILE)
-fi
-
 echo "-----> installing super-front node modules ..."
 cd $build/app/assets/super-front
 npm install
 
 cd $build
-echo "-----> using gulpfile ${GULPFILE:-gulpfile.js} ..."
-gulp --gulpfile ${GULPFILE:-gulpfile.js} assets:copy 2>&1
+make copy_assets 2>&1
 
 mkdir -p $build/bin
 cp `which goose` $build/bin
