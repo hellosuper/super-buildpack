@@ -25,6 +25,10 @@ virtualenv() {
     python "$buildpack/thirdparty/virtualenv-1.11.6/virtualenv.py" "$@"
 }
 
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+[[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh
+nvm install 18.18.0
+
 echo "-----> precompiling assets ..."
 
 if [ -d "$envdir" ]; then
