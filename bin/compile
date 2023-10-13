@@ -25,8 +25,7 @@ virtualenv() {
     python "$buildpack/thirdparty/virtualenv-1.11.6/virtualenv.py" "$@"
 }
 
-curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
-sudo apt-get install -y nodejs
+curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - && sudo apt-get install -y nodejs
 
 echo "-----> precompiling assets ..."
 
