@@ -25,12 +25,6 @@ virtualenv() {
     python "$buildpack/thirdparty/virtualenv-1.11.6/virtualenv.py" "$@"
 }
 
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
-[[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh
-nvm install 18.18.0
-
-echo "-----> precompiling assets ..."
-
 if [ -d "$envdir" ]; then
     for f in $envdir/*
     do
@@ -38,16 +32,5 @@ if [ -d "$envdir" ]; then
     done
 fi
 
-echo "-----> installing super-front node modules ..."
-cd $build/app/assets/super-front
-npm install
-
-cd $build
-make copy_assets 2>&1
-
 mkdir -p $build/bin
 cp `which goose` $build/bin
-
-echo "-----> remove super-front node_modules ...."
-rm -rf $build/app/assets/super-front/node_modules
-rm -rf $build/node_modules
