@@ -40,7 +40,7 @@ fi
 
 echo "-----> installing super-front node modules ..."
 cd $build/app/assets/super-front
-npm install
+yarn install
 
 cd $build
 make copy_assets 2>&1
